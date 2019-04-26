@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lesin.gitee.io
+url: https://oaway.netlify.com
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -79,5 +79,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git #部署方式
-  repository: https://gitee.com/lesin/blog.git #关联github仓库
+  repository: git@github.com:lesinliu/blog.git #关联github仓库
   branch: run-page #部署分支
