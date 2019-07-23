@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MDN,">
+  <meta name="keywords" content="JS MDN,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="JS中的for for 语句用于创建一个循环，它包含了三个可选的表达式，三个可选的表达式包围在圆括号中并由分号分隔， 后跟一个在循环中执行的语句（通常是一个块语句）。12for ([initialization]; [condition]; [final-expression])   statement  initialization  一个表达式 (包含赋值语句) 或者变量声明。典型地被用于初始">
-<meta name="keywords" content="MDN">
+<meta name="description" content="js中的valueOf和toString  null 和 undefined 没有这两个方法；隐式自动类型转换时会自动调用；涉及到操作符的问题，valueOf的优先级比toString的优先级高，涉及到显示问题，toString方法优先级比valueOf方法高。  valueOf valueOf方法返回指定对象的原始值，大多情况下都无需手动调用该方法，js会自动调用。但是复合对象大多数情况无法真正">
+<meta name="keywords" content="JS MDN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中的for">
-<meta property="og:url" content="http://yoursite.com/2019/05/20/JS中的for/index.html">
+<meta property="og:title" content="js中的valueOf和toString">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/js中的valueOf和toString/index.html">
 <meta property="og:site_name" content="lesin的笔记本">
-<meta property="og:description" content="JS中的for for 语句用于创建一个循环，它包含了三个可选的表达式，三个可选的表达式包围在圆括号中并由分号分隔， 后跟一个在循环中执行的语句（通常是一个块语句）。12for ([initialization]; [condition]; [final-expression])   statement  initialization  一个表达式 (包含赋值语句) 或者变量声明。典型地被用于初始">
+<meta property="og:description" content="js中的valueOf和toString  null 和 undefined 没有这两个方法；隐式自动类型转换时会自动调用；涉及到操作符的问题，valueOf的优先级比toString的优先级高，涉及到显示问题，toString方法优先级比valueOf方法高。  valueOf valueOf方法返回指定对象的原始值，大多情况下都无需手动调用该方法，js会自动调用。但是复合对象大多数情况无法真正">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T06:23:07.065Z">
+<meta property="og:updated_time" content="2019-07-23T03:27:29.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中的for">
-<meta name="twitter:description" content="JS中的for for 语句用于创建一个循环，它包含了三个可选的表达式，三个可选的表达式包围在圆括号中并由分号分隔， 后跟一个在循环中执行的语句（通常是一个块语句）。12for ([initialization]; [condition]; [final-expression])   statement  initialization  一个表达式 (包含赋值语句) 或者变量声明。典型地被用于初始">
+<meta name="twitter:title" content="js中的valueOf和toString">
+<meta name="twitter:description" content="js中的valueOf和toString  null 和 undefined 没有这两个方法；隐式自动类型转换时会自动调用；涉及到操作符的问题，valueOf的优先级比toString的优先级高，涉及到显示问题，toString方法优先级比valueOf方法高。  valueOf valueOf方法返回指定对象的原始值，大多情况下都无需手动调用该方法，js会自动调用。但是复合对象大多数情况无法真正">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/20/JS中的for/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/23/js中的valueOf和toString/">
 
 
 
 
 
-  <title>JS中的for | lesin的笔记本</title>
+  <title>js中的valueOf和toString | lesin的笔记本</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/JS中的for/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/js中的valueOf和toString/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lesin">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS中的for</h1>
+          <h1 class="post-title" itemprop="name headline">js中的valueOf和toString</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-20T13:42:28+08:00">
-                2019-05-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T10:03:43+08:00">
+                2019-07-23
               </time>
             
 
@@ -300,46 +300,58 @@
       
 
       
-        <h3 id="JS中的for"><a href="#JS中的for" class="headerlink" title="JS中的for"></a>JS中的for</h3><hr>
-<p>for 语句用于创建一个循环，它包含了三个可选的表达式，三个可选的表达式包围在圆括号中并由分号分隔， 后跟一个在循环中执行的语句（通常是一个块语句）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for ([initialization]; [condition]; [final-expression])</span><br><span class="line">   statement</span><br></pre></td></tr></table></figure></p>
+        <h3 id="js中的valueOf和toString"><a href="#js中的valueOf和toString" class="headerlink" title="js中的valueOf和toString"></a>js中的valueOf和toString</h3><hr>
 <blockquote>
-<p>initialization</p>
+<p>null 和 undefined 没有这两个方法；隐式自动类型转换时会自动调用；<br>涉及到操作符的问题，valueOf的优先级比toString的优先级高，涉及到显示问题，toString方法优先级比valueOf方法高。</p>
 </blockquote>
-<p>一个表达式 (包含赋值语句) 或者变量声明。典型地被用于初始化一个计数器。该表达式可以使用var或let关键字声明新的变量，使用var声明的变量不是该循环的局部变量，而是与for循环处在同样的作用域中。用let声明的变量是语句的局部变量。该表达式的结果无意义。</p>
-<blockquote>
-<p>condition</p>
+<h4 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf"></a>valueOf</h4><blockquote>
+<p>valueOf方法返回指定对象的<strong>原始值</strong>，大多情况下都无需手动调用该方法，js会自动调用。但是复合对象大多数情况无法真正表示一个原始值，此时valueOf方法返回对象本身。该方法会被object后面对象继承，并且每个核心对象都会覆盖该方法。以返回合适的值来使用。</p>
 </blockquote>
-<p>一个条件表达式被用于确定每一次循环是否能被执行。如果该表达式的结果为true， statement 将被执行。 这个表达式是可选的。如果被忽略，那么就被认为永远为真。如果计算结果为假，那么执行流程将被跳到for语句结构后面的第一条语句。</p>
-<blockquote>
-<p>final-expression</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align:right">valueOf返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td style="text-align:right">数组对象本身</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td style="text-align:right">布尔值</td>
+</tr>
+<tr>
+<td>Date</td>
+<td style="text-align:right">时间戳</td>
+</tr>
+<tr>
+<td>Function</td>
+<td style="text-align:right">函数本身</td>
+</tr>
+<tr>
+<td>Number</td>
+<td style="text-align:right">数字</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align:right">对象本身（默认设置）</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align:right">字符串</td>
+</tr>
+<tr>
+<td>Math 和 Error 对象没有 valueOf 方法。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h4><blockquote>
+<p>返回对象的字面量表示</p>
 </blockquote>
-<p>每次循环的最后都要执行的表达式。执行时机是在下一次condition的计算之前。通常被用于更新或者递增计数器变量。</p>
-<blockquote>
-<p>statement</p>
-</blockquote>
-<p>只要condition的结果为true就会被执行的语句。 要在循环体内执行多条语句，使用一个块语句（{ … }）来包含要执行的语句。没有任何语句要执行，使用一个空语句（;）。</p>
-<h3 id="js中的for-in"><a href="#js中的for-in" class="headerlink" title="js中的for in"></a>js中的for in</h3><hr>
-<p>for…in语句以<strong>任意顺序</strong>遍历一个对象自有的、继承的、可枚举的、非Symbol的属性。对于每个不同的属性，语句都会被执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (variable in object) &#123;...&#125;</span><br><span class="line">// variable  在每次迭代时，将不同的属性名分配给变量。</span><br><span class="line">// object  被迭代枚举其属性的对象。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>for…in不应该用于迭代一个 Array，其中索引顺序很重要。</strong>数组索引只是具有整数名称的枚举属性，并且与通用对象属性相同。</p>
-</blockquote>
-<h3 id="js中的for-of"><a href="#js中的for-of" class="headerlink" title="js中的for of"></a>js中的for of</h3><hr>
-<p>for…of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (variable of iterable) &#123;</span><br><span class="line">    //statements</span><br><span class="line">&#125;</span><br><span class="line">// variable   在每次迭代中，将不同属性的值分配给变量。</span><br><span class="line">// iterable   被迭代枚举其属性的对象。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>for…in 语句以原始插入顺序迭代对象的可枚举属性。<br>for…of 语句遍历可迭代对象定义要迭代的数据。</p>
-</blockquote>
-<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><hr>
-<p>forEach() 方法对数组的每个元素执行一次提供的函数。<br>return undefined<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(callback[, thisArg]);</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>callback 为数组中每个元素执行的函数，该函数接收三个参数：<br>  currentValue:数组中正在处理的当前元素。<br>  index:索引(可选)<br>  array:forEach() 方法正在操作的数组。（可选）  </p>
-</blockquote>
-<blockquote>
-<p>thisArg  可选参数。当执行回调函数时用作 this 的值(参考对象)。</p>
-</blockquote>
-<p><strong>forEach 遍历的范围在第一次调用 callback 前就会确定。调用 forEach 后添加到数组中的项不会被 callback 访问到。</strong><br><strong>forEach不直接改变调用它的对象，但是对象可能会被callback改变。）</strong><br><strong>没有办法中止或者跳出 forEach() 循环，除了抛出一个异常。</strong></p>
-<p><strong>MDN 笔记</strong></p>
 
       
     </div>
@@ -357,7 +369,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MDN/" rel="tag"># MDN</a>
+            <a href="/tags/JS-MDN/" rel="tag"># JS MDN</a>
           
         </div>
       
@@ -370,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/20/JS中的拷贝/" rel="next" title="JS中的拷贝">
-                <i class="fa fa-chevron-left"></i> JS中的拷贝
+              <a href="/2019/05/20/JS中的for/" rel="next" title="JS中的for">
+                <i class="fa fa-chevron-left"></i> JS中的for
               </a>
             
           </div>
@@ -379,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/23/js中的valueOf和toString/" rel="prev" title="js中的valueOf和toString">
-                js中的valueOf和toString <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +513,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的for"><span class="nav-number">1.</span> <span class="nav-text">JS中的for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js中的for-in"><span class="nav-number">2.</span> <span class="nav-text">js中的for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js中的for-of"><span class="nav-number">3.</span> <span class="nav-text">js中的for of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-number">4.</span> <span class="nav-text">forEach</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js中的valueOf和toString"><span class="nav-number">1.</span> <span class="nav-text">js中的valueOf和toString</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#valueOf-NaN"><span class="nav-number">1.1.</span> <span class="nav-text">valueOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toString-NaN"><span class="nav-number">1.2.</span> <span class="nav-text">toString</span></a></li></ol></li></ol></div>
             
 
           </div>

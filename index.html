@@ -229,6 +229,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/js中的valueOf和toString/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lesin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lesin的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/23/js中的valueOf和toString/" itemprop="url">js中的valueOf和toString</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T10:03:43+08:00">
+                2019-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="js中的valueOf和toString"><a href="#js中的valueOf和toString" class="headerlink" title="js中的valueOf和toString"></a>js中的valueOf和toString</h3><hr>
+<blockquote>
+<p>null 和 undefined 没有这两个方法；隐式自动类型转换时会自动调用；<br>涉及到操作符的问题，valueOf的优先级比toString的优先级高，涉及到显示问题，toString方法优先级比valueOf方法高。</p>
+</blockquote>
+<h4 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf"></a>valueOf</h4><blockquote>
+<p>valueOf方法返回指定对象的<strong>原始值</strong>，大多情况下都无需手动调用该方法，js会自动调用。但是复合对象大多数情况无法真正表示一个原始值，此时valueOf方法返回对象本身。该方法会被object后面对象继承，并且每个核心对象都会覆盖该方法。以返回合适的值来使用。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align:right">valueOf返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td style="text-align:right">数组对象本身</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td style="text-align:right">布尔值</td>
+</tr>
+<tr>
+<td>Date</td>
+<td style="text-align:right">时间戳</td>
+</tr>
+<tr>
+<td>Function</td>
+<td style="text-align:right">函数本身</td>
+</tr>
+<tr>
+<td>Number</td>
+<td style="text-align:right">数字</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align:right">对象本身（默认设置）</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align:right">字符串</td>
+</tr>
+<tr>
+<td>Math 和 Error 对象没有 valueOf 方法。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h4><blockquote>
+<p>返回对象的字面量表示</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/JS中的for/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -808,7 +979,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -821,7 +992,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
