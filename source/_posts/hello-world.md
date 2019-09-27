@@ -36,3 +36,9 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+
+写好blog后
+$ hexo clean 
+$ hexo g     
+$ hexo d
