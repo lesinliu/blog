@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: lesin的笔记本
+title: 心之所向
 subtitle:
 description:
 keywords:
 author: lesin
-language:
+language: zh-CN # 选择中文简体
 timezone:
 
 # URL
@@ -35,11 +35,11 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true # 文章中插入图片需要设置为true
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false #关闭hexo渲染高亮，使用主题代码块高亮
   line_number: true
   auto_detect: false
   tab_replace:
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
