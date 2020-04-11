@@ -1,11 +1,12 @@
 ---
 title: JS中的for
-date: 2019-05-20 13:42:28
+date: 2016-11-18 13:42:28
 tags: MDN
 ---
 ### JS中的for
 ------
 for 语句用于创建一个循环，它包含了三个可选的表达式，三个可选的表达式包围在圆括号中并由分号分隔， 后跟一个在循环中执行的语句（通常是一个块语句）。
+<!--more-->
 ```
 for ([initialization]; [condition]; [final-expression])
    statement

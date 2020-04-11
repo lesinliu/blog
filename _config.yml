@@ -75,6 +75,13 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: icarus
 
+githubEmojis:
+  enable: true
+  className: github-emoji
+  unicode: false
+  styles:
+  localEmojis:
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

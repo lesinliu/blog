@@ -1,6 +1,6 @@
 ---
 title: JS中的拷贝
-date: 2019-05-20 11:51:26
+date: 2016-11-16 09:00:30
 tags: JS
 ---
 ### 基本数据类型
@@ -16,6 +16,8 @@ tags: JS
   console.log(a); // 1
   console.log(b); // 3 
   ```
+<!--more-->
+
   ###引用类型
   * 数组（array）
   * 对象 (object)
