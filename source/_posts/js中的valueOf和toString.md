@@ -1,7 +1,7 @@
 ---
 title: js中的valueOf和toString
 date: 2016-11-22 10:03:43
-tags: JS MDN
+tags: javascript
 ---
 ### js中的valueOf和toString
 -------------------------
