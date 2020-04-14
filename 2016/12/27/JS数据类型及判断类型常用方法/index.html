@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>JS数据类型及判断类型常用方法 - 心之所向</title><meta description="数据类型最新的ES规范定义了八种数据类型  原始类型 String Number Boolean Undefined Null BigInt Symbol   引用类型 Object"><meta property="og:type" content="blog"><meta property="og:title" content="JS数据类型及判断类型常用方法"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="心之所向"><meta property="og:description" content="数据类型最新的ES规范定义了八种数据类型  原始类型 String Number Boolean Undefined Null BigInt Symbol   引用类型 Object"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2016-12-27T14:04:47.000Z"><meta property="article:modified_time" content="2020-04-14T06:59:13.044Z"><meta property="article:author" content="lesin"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://yoursite.com/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"},"headline":"心之所向","image":["http://yoursite.com/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png"],"datePublished":"2016-12-27T14:04:47.000Z","dateModified":"2020-04-14T06:59:13.044Z","author":{"@type":"Person","name":"lesin"},"description":"数据类型最新的ES规范定义了八种数据类型  原始类型 String Number Boolean Undefined Null BigInt Symbol   引用类型 Object"}</script><link rel="canonical" href="http://yoursite.com/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"><link rel="icon" href="/img/avatar.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/avatar.jpg" alt="心之所向" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png" alt="JS数据类型及判断类型常用方法"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2016-12-27T14:04:47.000Z" title="2016-12-27T14:04:47.000Z">2016-12-27</time><span class="level-item">8 分钟 读完 (大约 1230 个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">JS数据类型及判断类型常用方法</h1><div class="content"><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>最新的ES规范定义了八种数据类型</p>
+<ul>
+<li>原始类型<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Undefined</li>
+<li>Null</li>
+<li>BigInt</li>
+<li>Symbol</li>
+</ul>
+</li>
+<li>引用类型 Object<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h2 id="BigInt和Symbol"><a href="#BigInt和Symbol" class="headerlink" title="BigInt和Symbol"></a>BigInt和Symbol</h2><h3 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h3><blockquote>
+<p>BigInt类型是 JavaScript 中的一个基础的数值类型，可以用任意精度表示整数。也就是范围更大的整数。 以前我们表示超出范围的整数通常用String。<br>    普通的Number类型采用64位浮点格式表示，范围  -(2^53-1)  ——  2^53-1   Number.MAX_VALUE , Number.MIN_VALUE。</p>
+<ol>
+<li>创建BigInt<ul>
+<li>直接用数字后加n   eg: 2n</li>
+<li>构造函数    eg: BigInt(‘2’)</li>
+</ul>
+</li>
+<li>基本使用<pre><code class="javascript">// Number类型
+console.log(2 ** 10000)  // Infinity
+// BigInt类型
+console.log(2n ** 10000n)  // 199506...很长很长...9376n
+// Number类型和BigInt类型不能互换
+console.log(2n ** 100)  // Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
+</code></pre>
+</li>
+<li>总结<br>可以对BigInt使用运算符+、*、-、**和%，就像对数字一样。BigInt 严格来说并不等于一个数字，但它是松散的。<br>在将BigInt转换为Boolean时，它的行为类似于一个数字：if、||、&amp;&amp;、Boolean 和!。<br>BigInt不能与数字互换操作。否则，将抛出TypeError。</li>
+</ol>
+</blockquote>
+<h3 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h3><blockquote>
+<p>数据类型 “symbol” 是一种原始数据类型，该类型的性质在于这个类型的值可以用来创建匿名的对象属性。它具有唯一和不可枚举的特性。</p>
+<ol>
+<li>声明方法  Symbol 值通过Symbol函数生成<br><code>`</code>javascript<br> let symbolA = Symbol();<br> let symbolC = Symbol(‘ss’);  // 里面加上’ss‘利于区分</li>
+</ol>
+</blockquote>
+<pre><code>  // 如果 Symbol 的参数是一个对象，就会调用该对象的toString方法，将其转为字符串，然后才生成一个 Symbol 值。
+
+  let sss = new Symbol() // Symbol is not a constructor 报错  不能new调用 Symbol函数前不能使用new命令，否则会报错。这是因为生成的 Symbol 是一个原始类型的值，不是对象。也就是说，由于 Symbol 值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。 摘自阮一峰《ECMAScript 6 入门》
+```
+</code></pre><ol start="2">
+<li><p>唯一不重复</p>
+<pre><code class="javascript">let symbolA = Symbol();
+let symbolB = Symbol();
+console.log(symbolA === symbolB) // false
+
+let symbolC = Symbol('ss');
+let symbolD = Symbol('ss');
+console.log(symbolC === symbolD) // false
+</code></pre>
+</li>
+<li>匿名隐藏性<br>Symbol属性不可枚举，故在Object.keys(obj)、 for…in、 for…of, Object.getOwnPropertyNames(), JSON.stringify()不会出现。<pre><code class="javascript">let symbolA = Symbol();
+let obj = {}
+obj[symbolA] = 'hhh' // Symbol 值作为对象属性名时，不能用点运算符。
+console.log(obj) // {Symbol(): "hhh"}
+Object.keys(obj) // []
+</code></pre>
+</li>
+<li>常用方法</li>
+</ol>
+<ul>
+<li>Symbol.prototype.description 获得Symbol的描述</li>
+<li>Object.getOwnPropertySymbols() 获取指定对象的所有Symbol属性名</li>
+<li>Reflect.ownKeys(obj) 获取obj的所有属性名 包含Symbol</li>
+<li>Symbol.for()  接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建一个以该字符串为名称的 Symbol 值，并将其注册到全局  </li>
+<li><p>Symbol.keyFor()  返回一个已登记的 Symbol 类型值的key</p>
+<pre><code class="javascript">  // Symbol.prototype.description
+  const s = Symbol('ssss');
+  s.description // ssss
+
+  let s1 = Symbol.for('foo');
+  let s2 = Symbol.for('foo');
+  s1 === s2 // true
+
+  let s1 = Symbol.for("foo");
+  Symbol.keyFor(s1) // "foo"
+
+  let s2 = Symbol("foo"); // Symbol方法创建的Symbol并不会登记到全局 故使用keyFor获取不到key  
+  Symbol.keyFor(s2) // undefined  
+
+  // 即使是在局部作用域也会注册到全局   Symbol.for()的这个全局登记特性，可以用在不同的 iframe 或 service worker 中取到同一个值。
+  function foo() {
+    return Symbol.for('bar');
+  }
+
+  const x = foo();
+  const y = Symbol.for('bar');
+  console.log(x === y); // true
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><ul>
+<li>typeof</li>
+<li>instanceof</li>
+<li>Object.prototype.toString.call</li>
+</ul>
+<ol>
+<li>typeof能判断出基本类型，但是不能识别null和数组 都为object  typeof将所有非function引用类型和null都作为object <pre><code class="javascript"> console.log(typeof 1)    // number
+ console.log(typeof 'abc')// string
+ console.log(typeof true) // boolean
+ console.log(typeof Symbol())// symbol
+ console.log(typeof null) // object
+ console.log(typeof undefined) // undefined
+ console.log(typeof (()=&gt;{})) // function
+ console.log(typeof new RegExp()) // object
+</code></pre>
+</li>
+<li>instanceof 不能识别基础类型 A instanceof B   判断B是否是A的原型链上。<pre><code class="javascript"> console.log([] instanceof Array) // true
+ console.log([] instanceof Object) // true
+</code></pre>
+</li>
+<li>Object.prototype.toString.call  比较完美的判断类型的方法<pre><code class="javascript"> // 基本类型的判断
+ Object.prototype.toString.call(1) ;    // [object Number]
+ Object.prototype.toString.call('aaa') ;   // [object String]
+ Object.prototype.toString.call(true) ; // [object Boolean]
+ Object.prototype.toString.call(Symbol()); //[object Symbol]
+ Object.prototype.toString.call(undefined) ; // [object Undefined]
+ Object.prototype.toString.call(null) ; // [object Null]
+ // 引用类型以及内置对象判断
+ Object.prototype.toString.call(function(){}) ; // [object Function]
+ Object.prototype.toString.call(new Date()) ; // [object Date]
+ Object.prototype.toString.call(new Array()) ; // [object Array]
+ Object.prototype.toString.call(new RegExp()) ; // [object RegExp]
+ Object.prototype.toString.call(new Error()) ; // [object Error]
+ Object.prototype.toString.call(new Map()); // [object Map]
+ Object.prototype.toString.call(new Set()); // [object Set]
+ Object.prototype.toString.call(window) ; //[object global] window 是全局对象 global 的引用
+ // 节点类型
+ Object.prototype.toString.call(document) ; // [object HTMLDocument]
+</code></pre>
+</li>
+</ol>
+<p>可忽略：<br>其他判断类型方法  constructor  但是constructor指向能轻易被改变，故不安全</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://es6.ruanyifeng.com/#docs/symbol">阮一峰《ECMAScript 6 入门》</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects">MDN</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/"><span class="level-item">javascript中this的指向问题</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: false,
+            verify: false,
+            appId: '9eI7BdJev9YzUluBzxydfAm8-gzGzoHsz',
+            appKey: 'EJKaC3O8QX2MFBK5XN27e3WE',
+            placeholder: '说点什么吧...',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: false,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#数据类型"><span class="mr-2">1</span><span>数据类型</span></a></li><li><a class="is-flex" href="#BigInt和Symbol"><span class="mr-2">2</span><span>BigInt和Symbol</span></a><ul class="menu-list"><li><a class="is-flex" href="#BigInt"><span class="mr-2">2.1</span><span>BigInt</span></a></li><li><a class="is-flex" href="#Symbol"><span class="mr-2">2.2</span><span>Symbol</span></a></li></ul></li><li><a class="is-flex" href="#类型判断"><span class="mr-2">3</span><span>类型判断</span></a></li><li><a class="is-flex" href="#参考"><span class="mr-2">4</span><span>参考</span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"><p class="image is-64x64"><img class="thumbnail" src="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png" alt="JS数据类型及判断类型常用方法"></p></a><div class="media-content size-small"><p><time dateTime="2016-12-27T14:04:47.000Z">2016-12-27</time></p><p class="title is-6"><a class="link-muted" href="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">JS数据类型及判断类型常用方法</a></p><p class="is-uppercase"></p></div></article><article class="media"><a class="media-left" href="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/"><p class="image is-64x64"><img class="thumbnail" src="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/this.jpg" alt="javascript中this的指向问题"></p></a><div class="media-content size-small"><p><time dateTime="2016-12-22T03:47:10.000Z">2016-12-22</time></p><p class="title is-6"><a class="link-muted" href="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/">javascript中this的指向问题</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-22T02:03:43.000Z">2016-11-22</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/22/js%E4%B8%AD%E7%9A%84valueOf%E5%92%8CtoString/">js中的valueOf和toString</a></p><p class="is-uppercase"></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-18T05:42:28.000Z">2016-11-18</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/18/JS%E4%B8%AD%E7%9A%84for/">JS中的for</a></p><p class="is-uppercase"></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-16T01:00:30.000Z">2016-11-16</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/16/JS%E4%B8%AD%E7%9A%84%E6%8B%B7%E8%B4%9D/">JS中的拷贝</a></p><p class="is-uppercase"></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/html/"><span class="level-start"><span class="level-item">html</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/JS/"><span class="tag">JS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS-%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">JS 浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MDN/"><span class="tag">MDN</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/test/"><span class="tag">test</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="/img/avatar.jpg" alt="东风吹"></figure><p class="title is-size-4 is-block line-height-inherit">东风吹</p><p class="is-size-6 is-block">汗汗汗</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>杭州市西湖区</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/"><i class="fab fa-github"></i></a></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2016/12/"><span class="level-start"><span class="level-item">十二月 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2016/11/"><span class="level-start"><span class="level-item">十一月 2016</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2016/10/"><span class="level-start"><span class="level-item">十月 2016</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/avatar.jpg" alt="心之所向" height="28"></a><p class="size-small"><span>&copy; 2020 lesin</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://yoursite.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

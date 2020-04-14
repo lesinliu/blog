@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>javascript中this的指向问题 - 心之所向</title><meta description="this是当前执行代码的环境对象，在非严格模式下，总是指向一个对象，在严格模式下可以是任意值  this指向  全局环境指向全局对象 函数环境 函数调用 非严格模式下指向全局对象， 严格模式下指向undefined 作为对象的方法调用，则this指向该对象 构造函数this被绑定到正在构造的新对象"><meta property="og:type" content="blog"><meta property="og:title" content="javascript中this的指向问题"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="心之所向"><meta property="og:description" content="this是当前执行代码的环境对象，在非严格模式下，总是指向一个对象，在严格模式下可以是任意值  this指向  全局环境指向全局对象 函数环境 函数调用 非严格模式下指向全局对象， 严格模式下指向undefined 作为对象的方法调用，则this指向该对象 构造函数this被绑定到正在构造的新对象"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2016-12-22T03:47:10.000Z"><meta property="article:modified_time" content="2020-04-14T02:52:40.491Z"><meta property="article:author" content="lesin"><meta property="article:tag" content="javascript"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://yoursite.com/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/this.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/"},"headline":"心之所向","image":["http://yoursite.com/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/this.jpg"],"datePublished":"2016-12-22T03:47:10.000Z","dateModified":"2020-04-14T02:52:40.491Z","author":{"@type":"Person","name":"lesin"},"description":"this是当前执行代码的环境对象，在非严格模式下，总是指向一个对象，在严格模式下可以是任意值  this指向  全局环境指向全局对象 函数环境 函数调用 非严格模式下指向全局对象， 严格模式下指向undefined 作为对象的方法调用，则this指向该对象 构造函数this被绑定到正在构造的新对象"}</script><link rel="canonical" href="http://yoursite.com/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/"><link rel="icon" href="/img/avatar.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/avatar.jpg" alt="心之所向" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/this.jpg" alt="javascript中this的指向问题"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2016-12-22T03:47:10.000Z" title="2016-12-22T03:47:10.000Z">2016-12-22</time><span class="level-item"><a class="link-muted" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="level-item">6 分钟 读完 (大约 843 个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">javascript中this的指向问题</h1><div class="content"><blockquote>
+<p>this是当前执行代码的环境对象，在非严格模式下，总是指向一个对象，在严格模式下可以是任意值</p>
+</blockquote>
+<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><hr>
+<ul>
+<li>全局环境指向全局对象</li>
+<li>函数环境<ul>
+<li>函数调用 非严格模式下指向全局对象， 严格模式下指向undefined</li>
+<li>作为对象的方法调用，则this指向该对象</li>
+<li>构造函数this被绑定到正在构造的新对象</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。"><a href="#全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。" class="headerlink" title="全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。"></a>全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。</h3><pre><code class="javascript">  console.log(this === window) // true  浏览器环境下  其实还有个globalThis表示通用的全局对象
+</code></pre>
+<h3 id="函数环境，要看调用方式来判断this指向"><a href="#函数环境，要看调用方式来判断this指向" class="headerlink" title="函数环境，要看调用方式来判断this指向"></a>函数环境，要看调用方式来判断this指向</h3><ul>
+<li><p>简单的函数调用 非严格模式下指向全局对象， 严格模式下指向undefined</p>
+<pre><code class="javascript">  // 函数声明
+  function fn(){
+    console.log(this === window)  // true  浏览器环境
+  }
+  fn()
+
+  // 函数表达式
+  let fnA = function(){
+    console.log(this === window)  // true  浏览器环境
+  }
+  fnA()
+
+  // 箭头函数
+  (()=&gt;{console.log(this === window)})() // true 箭头函数内this绑定的是箭头函数父作用域的this
+</code></pre>
+</li>
+<li>作为对象的方法调用，则this指向该对象<pre><code class="javascript">let obj = {
+  a: 1,
+  methodA: function(){
+    console.log(this.a) // 1
+  }
+}
+obj.methodA()
+</code></pre>
+</li>
+<li><p>当一个函数用作构造函数时（使用new关键字） this被绑定到正在构造的新对象</p>
+<pre><code class="javascript">  function Person() {
+    console.log(this);            // node: Person {}    浏览器： {} 它的__proto__是 Person.prototype  故他是Person的一个实例对象
+    console.log(Person);          // node: [Function: Person]
+    console.log(Person.prototype);// node: Person {}    浏览器： 原型{} 它的constructor: Person  都是{}的意思
+
+    console.log(this.__proto__ === Object);  //false
+    console.log(typeof this);     // object
+    console.log(typeof Person);   // function
+    console.log(typeof Person.prototype); // object
+
+    console.log(Object.prototype.toString.call(this));  // [object Object]
+    console.log(Object.prototype.toString.call(Person)); // [object Function]
+    console.log(Object.prototype.toString.call(Person.prototype));  // [object Object]
+
+    console.log(Person === this);  // false
+    console.log(Person.prototype === this); // false
+    console.log(Person.__proto__ === this); // false
+
+    console.log(Person == this);  // false
+    console.log(Person.prototype == this); // false
+    console.log(Person.__proto__ == this); // false
+
+  }
+  var personOne = new Person();
+  // new操作符做了什么
+  // 1. 创建了个空对象 let o = {}
+  // 2. 将this.__proto__ 指向构造函数的prototype
+  // 3. 绑定属性 Person.call(o)  改变Person内部this指向为o
+  // 4. returtn o
+
+</code></pre>
+<blockquote>
+<p><strong>结果就是我们在构造函数内打印this会指向对象{}，{} 它的<strong>proto</strong>是 Person.prototype  故他是Person的一个实例对象Person</strong> </p>
+</blockquote>
+</li>
+<li>当函数被用作事件处理函数时，它的this指向触发事件的元素（一些浏览器在使用非addEventListener的函数动态添加监听函数时不遵守这个约定）。</li>
+</ul>
+<hr>
+<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><ul>
+<li>call</li>
+<li>apply</li>
+<li><strong>bind</strong> ( ECMAScript 5 引入了 Function.prototype.bind())</li>
+</ul>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><pre><code class="javascript">  let obj = {
+    a: 'a'
+  }
+  let obj2 = {
+    method2(){
+      console.log(this.a) // a
+    }
+  }
+
+  // 调用call将obj2内部this指向obj, call(this, ...args) 可传入多个参数
+  obj2.method2.call(obj)
+
+</code></pre>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><p>  apply和call用法类似，唯一区别就是call() 方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组</p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>  创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。与上面两个不同的是bind()返回的是一个绑定了新的this的函数。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><hr>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">MDN</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/javascript/">javascript</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">JS数据类型及判断类型常用方法</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2016/11/22/js%E4%B8%AD%E7%9A%84valueOf%E5%92%8CtoString/"><span class="level-item">js中的valueOf和toString</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: false,
+            verify: false,
+            appId: '9eI7BdJev9YzUluBzxydfAm8-gzGzoHsz',
+            appKey: 'EJKaC3O8QX2MFBK5XN27e3WE',
+            placeholder: '说点什么吧...',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: false,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#this指向"><span class="mr-2">1</span><span>this指向</span></a><ul class="menu-list"><li><a class="is-flex" href="#全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。"><span class="mr-2">1.1</span><span>全局环境（在函数体外部）下（无论是否是严格模式）均指向全局对象。</span></a></li><li><a class="is-flex" href="#函数环境，要看调用方式来判断this指向"><span class="mr-2">1.2</span><span>函数环境，要看调用方式来判断this指向</span></a></li></ul></li><li><a class="is-flex" href="#改变this指向"><span class="mr-2">2</span><span>改变this指向</span></a><ul class="menu-list"><li><a class="is-flex" href="#call"><span class="mr-2">2.1</span><span>call</span></a></li><li><a class="is-flex" href="#apply"><span class="mr-2">2.2</span><span>apply</span></a></li><li><a class="is-flex" href="#bind"><span class="mr-2">2.3</span><span>bind</span></a></li></ul></li><li><a class="is-flex" href="#参考"><span class="mr-2">3</span><span>参考</span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"><p class="image is-64x64"><img class="thumbnail" src="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/1.png" alt="JS数据类型及判断类型常用方法"></p></a><div class="media-content size-small"><p><time dateTime="2016-12-27T14:04:47.000Z">2016-12-27</time></p><p class="title is-6"><a class="link-muted" href="/2016/12/27/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">JS数据类型及判断类型常用方法</a></p><p class="is-uppercase"></p></div></article><article class="media"><a class="media-left" href="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/"><p class="image is-64x64"><img class="thumbnail" src="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/this.jpg" alt="javascript中this的指向问题"></p></a><div class="media-content size-small"><p><time dateTime="2016-12-22T03:47:10.000Z">2016-12-22</time></p><p class="title is-6"><a class="link-muted" href="/2016/12/22/javascript%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%85%B3/">javascript中this的指向问题</a></p><p class="is-uppercase"><a class="link-muted" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-22T02:03:43.000Z">2016-11-22</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/22/js%E4%B8%AD%E7%9A%84valueOf%E5%92%8CtoString/">js中的valueOf和toString</a></p><p class="is-uppercase"></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-18T05:42:28.000Z">2016-11-18</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/18/JS%E4%B8%AD%E7%9A%84for/">JS中的for</a></p><p class="is-uppercase"></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2016-11-16T01:00:30.000Z">2016-11-16</time></p><p class="title is-6"><a class="link-muted" href="/2016/11/16/JS%E4%B8%AD%E7%9A%84%E6%8B%B7%E8%B4%9D/">JS中的拷贝</a></p><p class="is-uppercase"></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/html/"><span class="level-start"><span class="level-item">html</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/JS/"><span class="tag">JS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS-%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">JS 浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MDN/"><span class="tag">MDN</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/test/"><span class="tag">test</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="/img/avatar.jpg" alt="东风吹"></figure><p class="title is-size-4 is-block line-height-inherit">东风吹</p><p class="is-size-6 is-block">汗汗汗</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>杭州市西湖区</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/"><i class="fab fa-github"></i></a></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2016/12/"><span class="level-start"><span class="level-item">十二月 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2016/11/"><span class="level-start"><span class="level-item">十一月 2016</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2016/10/"><span class="level-start"><span class="level-item">十月 2016</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/avatar.jpg" alt="心之所向" height="28"></a><p class="size-small"><span>&copy; 2020 lesin</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://yoursite.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
